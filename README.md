@@ -67,42 +67,7 @@ Now, Queue becomes empty, So, terminate these process of iteration.
 <li>Iterate steps 4 and 5 until all nodes get visited, and there are no more unvisited nodes.</li>
 
 </ol>
-<h2>Program:</h2>
-```
-from collections import deque
 
-def bfs(graph, start):
-    visited = []
-    queue = deque([start])
-    visited.append(start)
-
-    while queue:
-        node = queue.popleft()
-        for neighbour in graph[node]:
-            if neighbour not in visited:
-                visited.append(neighbour)
-                queue.append(neighbour)
-    return visited
-
-n, m = map(int, input("Enter number of vertices and edges: ").split())
-graph = {}
-
-print("Enter the edges:")
-for _ in range(m):
-    u, v = input().split()
-    if u not in graph:
-        graph[u] = []
-    if v not in graph:
-        graph[v] = []
-    graph[u].append(v)
-    graph[v].append(u)
-
-start_node = input("Enter the starting node: ")
-result = bfs(graph, start_node)
-
-print("BFS Traversal:", result)
-
-```
 <hr>
 <h3>Sample Input</h3>
 <hr>
@@ -138,6 +103,49 @@ G F <BR>
 <hr>
 ['0', '1', '2', '3', '4']
 <hr>
+
+<h3>Program:</h3>
+
+
+```
+from collections import deque
+
+def bfs(graph, start):
+    visited = []
+    queue = deque([start])
+    visited.append(start)
+
+    while queue:
+        node = queue.popleft()
+        for neighbour in graph[node]:
+            if neighbour not in visited:
+                visited.append(neighbour)
+                queue.append(neighbour)
+    return visited
+n, m = map(int, input("Enter number of vertices and edges: ").split())
+graph = {}
+
+print("Enter the edges:")
+for _ in range(m):
+    u, v = input().split()
+    if u not in graph:
+        graph[u] = []
+    if v not in graph:
+        graph[v] = []
+    graph[u].append(v)
+    graph[v].append(u)
+
+start_node = input("Enter the starting node: ")
+result = bfs(graph, start_node)
+
+print("BFS Traversal:", result)
+
+```
+
+
+<h3>Output:</h3>
+<img width="502" height="219" alt="image" src="https://github.com/user-attachments/assets/62b859d3-3a3a-4c57-9e23-91bac5a31f9c" />
+
 <h3>Result:</h3>
 <hr>
 <p>Thus,a Graph was constructed and implementation of Breadth First Search for the same graph was done successfully.</p>
